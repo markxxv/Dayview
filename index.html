@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day view - Provider Readiness</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    /* Minimal custom for precise timeline if needed, but stick to Tailwind */
+    .timeline-container {
+      min-width: 900px;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 font-sans">
+  <div class="max-w-[1400px] mx-auto p-4 md:p-6">
+    <!-- Main Card -->
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+      <!-- Header -->
+      <div class="px-6 py-5 border-b border-gray-100">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <h1 class="text-2xl font-semibold text-gray-900">Day view</h1>
+            <p class="text-sm text-gray-500 mt-0.5">Readiness for every visit, 8 AM to 1 PM</p>
+          </div>
+          
+          <!-- Legend + Filter -->
+          <div class="flex flex-wrap items-center gap-4 md:gap-6 text-sm">
+            <div class="flex items-center gap-2">
+              <div class="w-4 h-4 rounded-full border-2 border-gray-300"></div>
+              <span class="text-gray-600">Ready</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-4 h-4 rounded-full border-2 border-dashed border-gray-400"></div>
+              <span class="text-gray-600">Agent working</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-4 h-4 rounded border-2 border-purple-500"></div>
+              <span class="text-gray-600">Needs you</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-4 h-4 rounded border-2 border-orange-400"></div>
+              <span class="text-gray-600">At risk</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-4 h-4 rounded border-2 border-dotted border-gray-400"></div>
+              <span class="text-gray-600">Proposed by agent</span>
+            </div>
+            
+            <div class="ml-2">
+              <button class="flex items-center gap-2 px-3 py-1.5 bg-gray-50 border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100">
+                12 of 14 providers
+                <i data-lucide="chevron-down" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Schedule Area -->
+      <div class="flex overflow-x-auto">
+        <!-- Providers Column -->
+        <div class="w-64 flex-shrink-0 border-r border-gray-100 bg-white sticky left-0 z-10">
+          <div class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wide border-b border-gray-100">
+            Provider
+          </div>
+          
+          <!-- Provider List -->
+          <div class="divide-y divide-gray-50">
+            <!-- 1. Dr. Grace Okafor -->
+            <div class="px-4 py-3 flex items-center gap-3 h-[72px]">
+              <img src="https://ui-avatars.com/api/?name=Grace+Okafor&background=6366f1&color=fff&size=40&rounded=true" alt="Dr. Grace Okafor" class="w-10 h-10 rounded-full object-cover">
+              <div class="min-w-0">
+                <div class="font-medium text-gray-900 text-sm truncate">Dr. Grace Okafor</div>
+                <div class="text-xs text-gray-500">Spine and orthopedics</div>
+              </div>
+            </div>
+            
+            <!-- 2. Dr. Samuel Lin -->
+            <div class="px-4 py-3 flex items-center gap-3 h-[72px]">
+              <img src="https://ui-avatars.com/api/?name=Samuel+Lin&background=0ea5e9&color=fff&size=40&rounded=true" alt="Dr. Samuel Lin" class="w-10 h-10 rounded-full object-cover">
+              <div class="min-w-0">
+                <div class="font-medium text-gray-900 text-sm truncate">Dr. Samuel Lin</div>
+                <div class="text-xs text-gray-500">Family medicine</div>
+              </div>
+            </div>
+            
+            <!-- 3. Dr. Elena Ruiz -->
+            <div class="px-4 py-3 flex items-center gap-3 h-[72px]">
+              <img src="https://ui-avatars.com/api/?name=Elena+Ruiz&background=ec4899&color=fff&size=40&rounded=true" alt="Dr. Elena Ruiz" class="w-10 h-10 rounded-full object-cover">
+              <div class="min-w-0">
+                <div class="font-medium text-gray-900 text-sm truncate">Dr. Elena Ruiz</div>
+                <div class="text-xs text-gray-500">Cardiology</div>
+              </div>
+            </div>
+            
+            <!-- 4. Dr. James Porter -->
+            <div class="px-4 py-3 flex items-center gap-3 h-[72px]">
+              <img src="https://ui-avatars.com/api/?name=James+Porter&background=8b5cf6&color=fff&size=40&rounded=true" alt="Dr. James Porter" class="w-10 h-10 rounded-full object-cover">
+              <div class="min-w-0">
+                <div class="font-medium text-gray-900 text-sm truncate">Dr. James Porter</div>
+                <div class="text-xs text-gray-500">Dermatology</div>
+              </div>
+            </div>
+            
+            <!-- 5. Dr. Amira Haddad -->
+            <div class="px-4 py-3 flex items-center gap-3 h-[72px]">
+              <img src="https://ui-avatars.com/api/?name=Amira+Haddad&background=f59e0b&color=fff&size=40&rounded=true" alt="Dr. Amira Haddad" class="w-10 h-10 rounded-full object-cover">
+              <div class="min-w-0">
+                <div class="font-medium text-gray-900 text-sm truncate">Dr. Amira Haddad</div>
+                <div class="text-xs text-gray-500">Pediatrics</div>
+              </div>
+            </div>
+            
+            <!-- 6. Dr. Noah Bennett -->
+            <div class="px-4 py-3 flex items-center gap-3 h-[72px]">
+              <img src="https://ui-avatars.com/api/?name=Noah+Bennett&background=10b981&color=fff&size=40&rounded=true" alt="Dr. Noah Bennett" class="w-10 h-10 rounded-full object-cover">
+              <div class="min-w-0">
+                <div class="font-medium text-gray-900 text-sm truncate">Dr. Noah Bennett</div>
+                <div class="text-xs text-gray-500">Sports medicine</div>
+              </div>
+            </div>
+            
+            <!-- 7. Dr. Ravi Menon -->
+            <div class="px-4 py-3 flex items-center gap-3 h-[72px]">
+              <img src="https://ui-avatars.com/api/?name=Ravi+Menon&background=3b82f6&color=fff&size=40&rounded=true" alt="Dr. Ravi Menon" class="w-10 h-10 rounded-full object-cover">
+              <div class="min-w-0">
+                <div class="font-medium text-gray-900 text-sm truncate">Dr. Ravi Menon</div>
+                <div class="text-xs text-gray-500">Internal medicine</div>
+              </div>
+            </div>
+            
+            <!-- 8. Dr. Claire Dunn -->
+            <div class="px-4 py-3 flex items-center gap-3 h-[72px]">
+              <img src="https://ui-avatars.com/api/?name=Claire+Dunn&background=f97316&color=fff&size=40&rounded=true" alt="Dr. Claire Dunn" class="w-10 h-10 rounded-full object-cover">
+              <div class="min-w-0">
+                <div class="font-medium text-gray-900 text-sm truncate">Dr. Claire Dunn</div>
+                <div class="text-xs text-gray-500">Endocrinology</div>
+              </div>
+            </div>
+            
+            <!-- 9. Dr. Victor Adeyemi -->
+            <div class="px-4 py-3 flex items-center gap-3 h-[72px]">
+              <img src="https://ui-avatars.com/api/?name=Victor+Adeyemi&background=14b8a6&color=fff&size=40&rounded=true" alt="Dr. Victor Adeyemi" class="w-10 h-10 rounded-full object-cover">
+              <div class="min-w-0">
+                <div class="font-medium text-gray-900 text-sm truncate">Dr. Victor Adeyemi</div>
+                <div class="text-xs text-gray-500">Gastroenterology</div>
+              </div>
+            </div>
+            
+            <!-- 10. Dr. Mei Tan -->
+            <div class="px-4 py-3 flex items-center gap-3 h-[72px]">
+              <img src="https://ui-avatars.com/api/?name=Mei+Tan&background=a855f7&color=fff&size=40&rounded=true" alt="Dr. Mei Tan" class="w-10 h-10 rounded-full object-cover">
+              <div class="min-w-0">
+                <div class="font-medium text-gray-900 text-sm truncate">Dr. Mei Tan</div>
+                <div class="text-xs text-gray-500">Women's health</div>
+              </div>
+            </div>
+            
+            <!-- 11. Dr. Lucas Ortiz -->
+            <div class="px-4 py-3 flex items-center gap-3 h-[72px]">
+              <img src="https://ui-avatars.com/api/?name=Lucas+Ortiz&background=ef4444&color=fff&size=40&rounded=true" alt="Dr. Lucas Ortiz" class="w-10 h-10 rounded-full object-cover">
+              <div class="min-w-0">
+                <div class="font-medium text-gray-900 text-sm truncate">Dr. Lucas Ortiz</div>
+                <div class="text-xs text-gray-500">Neurology</div>
+              </div>
+            </div>
+            
+            <!-- 12. Dr. Fiona Walsh -->
+            <div class="px-4 py-3 flex items-center gap-3 h-[72px]">
+              <img src="https://ui-avatars.com/api/?name=Fiona+Walsh&background=06b6d4&color=fff&size=40&rounded=true" alt="Dr. Fiona Walsh" class="w-10 h-10 rounded-full object-cover">
+              <div class="min-w-0">
+                <div class="font-medium text-gray-900 text-sm truncate">Dr. Fiona Walsh</div>
+                <div class="text-xs text-gray-500">Rheumatology</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="flex-1 timeline-container relative">
+          <!-- Time Header -->
+          <div class="h-[52px] border-b border-gray-100 relative bg-white sticky top-0 z-20">
+            <div class="absolute inset-0 flex">
+              <div class="flex-1 relative">
+                <!-- Current time marker -->
+                <div class="absolute left-[4%] top-1/2 -translate-y-1/2 z-30">
+                  <div class="bg-gray-900 text-white text-xs font-semibold px-2 py-0.5 rounded-full flex items-center gap-1 shadow">
+                    <span>8:12</span>
+                  </div>
+                  <div class="absolute top-full left-1/2 -translate-x-1/2 w-px h-[1000px] bg-gray-900"></div>
+                </div>
+                
+                <div class="flex justify-between px-4 text-xs font-medium text-gray-500 pt-3">
+                  <span class="ml-12">9 AM</span>
+                  <span>10 AM</span>
+                  <span>11 AM</span>
+                  <span>12 PM</span>
+                  <span>1 PM</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rows of appointments -->
+          <div class="divide-y divide-gray-50">
+            <!-- Row 1: Grace Okafor -->
+            <div class="h-[72px] relative">
+              <div class="absolute top-1/2 -translate-y-1/2 left-[2%] w-[8%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Priya Nair</div>
+                <div class="text-gray-500">8:00</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[11%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Luis O.</div>
+                <div class="text-gray-500">8:30</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[20%] w-[8%] bg-white border border-dashed border-gray-300 rounded-lg px-2 py-1.5 text-xs">
+                <div class="font-medium text-gray-700">Hannah Cole</div>
+                <div class="text-gray-500">9:10</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[30%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Owen P.</div>
+                <div class="text-gray-500">10:00</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[40%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium text-orange-600">Grace Lee</div>
+                <div class="text-gray-500">10:40</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[50%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Tom F.</div>
+                <div class="text-gray-500">11:30</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[60%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Nell Ross</div>
+                <div class="text-gray-500">12:10</div>
+              </div>
+            </div>
+
+            <!-- Row 2: Samuel Lin -->
+            <div class="h-[72px] relative">
+              <div class="absolute top-1/2 -translate-y-1/2 left-[1%] w-[6%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Ava</div>
+                <div class="text-gray-500">8:00</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[9%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Ben Adler</div>
+                <div class="text-gray-500">8:25</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[18%] w-[6%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Ruth A.</div>
+                <div class="text-gray-500">9:00</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[26%] w-[7%] bg-white border-2 border-dashed border-purple-400 rounded-lg px-2 py-1.5 text-xs">
+                <div class="font-medium text-purple-700">Daniel K.</div>
+                <div class="text-gray-500">9:40</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[35%] w-[6%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Sara Q.</div>
+                <div class="text-gray-500">10:10</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[43%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Leo Grant</div>
+                <div class="text-gray-500">10:50</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[52%] w-[7%] bg-white border border-dotted border-gray-400 rounded-lg px-2 py-1.5 text-xs">
+                <div class="font-medium text-gray-600">Nina Shah</div>
+                <div class="text-gray-500">11:25</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[61%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Ali Khan</div>
+                <div class="text-gray-500">12:05</div>
+              </div>
+            </div>
+
+            <!-- Row 3: Elena Ruiz -->
+            <div class="h-[72px] relative">
+              <div class="absolute top-1/2 -translate-y-1/2 left-[1%] w-[8%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Paul Young</div>
+                <div class="text-gray-500">8:00</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[11%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">June Park</div>
+                <div class="text-gray-500">8:45</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[20%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Eli Brooks</div>
+                <div class="text-gray-500">9:30</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[29%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium text-orange-600">Rosa Diaz</div>
+                <div class="text-gray-500">10:15</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[38%] w-[6%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Carl W.</div>
+                <div class="text-gray-500">11:05</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[46%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Tim Byrd</div>
+                <div class="text-gray-500">11:45</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[55%] w-[7%] bg-white border border-dotted border-gray-400 rounded-lg px-2 py-1.5 text-xs">
+                <div class="font-medium text-gray-600">Joy Hill</div>
+                <div class="text-gray-500">12:30</div>
+              </div>
+            </div>
+
+            <!-- Row 4: James Porter -->
+            <div class="h-[72px] relative">
+              <div class="absolute top-1/2 -translate-y-1/2 left-[3%] w-[5%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Mia</div>
+                <div class="text-gray-500">8:10</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[10%] w-[5%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Ivy T.</div>
+                <div class="text-gray-500">8:40</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[17%] w-[7%] bg-white border border-dashed border-gray-300 rounded-lg px-2 py-1.5 text-xs">
+                <div class="font-medium text-gray-700">Noel Hart</div>
+                <div class="text-gray-500">9:10</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[27%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium text-purple-600">Aisha B.</div>
+                <div class="text-gray-500">10:15</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[36%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Kai Rivera</div>
+                <div class="text-gray-500">11:00</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[45%] w-[5%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Zoe</div>
+                <div class="text-gray-500">11:35</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[52%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Max Cole</div>
+                <div class="text-gray-500">12:05</div>
+              </div>
+            </div>
+
+            <!-- Row 5: Amira Haddad -->
+            <div class="h-[72px] relative">
+              <div class="absolute top-1/2 -translate-y-1/2 left-[1%] w-[8%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Lily Moore</div>
+                <div class="text-gray-500">8:00</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[11%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Finn Clark</div>
+                <div class="text-gray-500">8:35</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[20%] w-[6%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Ruby S.</div>
+                <div class="text-gray-500">9:15</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[28%] w-[7%] bg-white border border-dotted border-gray-400 rounded-lg px-2 py-1.5 text-xs">
+                <div class="font-medium text-gray-600">Ezra C.</div>
+                <div class="text-gray-500">10:00</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[37%] w-[6%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Maya P.</div>
+                <div class="text-gray-500">10:40</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[45%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium text-orange-600">Jude King</div>
+                <div class="text-gray-500">11:20</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[54%] w-[6%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Ben L.</div>
+                <div class="text-gray-500">12:00</div>
+              </div>
+            </div>
+
+            <!-- Row 6: Noah Bennett -->
+            <div class="h-[72px] relative">
+              <div class="absolute top-1/2 -translate-y-1/2 left-[4%] w-[6%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Cole B.</div>
+                <div class="text-gray-500">8:15</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[12%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Tess Ward</div>
+                <div class="text-gray-500">9:00</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[21%] w-[6%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Ian Fox</div>
+                <div class="text-gray-500">9:50</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[29%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Dana Ross</div>
+                <div class="text-gray-500">10:30</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[38%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium text-purple-600">Robert H.</div>
+                <div class="text-gray-500">11:20</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[47%] w-[6%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Cy Park</div>
+                <div class="text-gray-500">12:00</div>
+              </div>
+            </div>
+
+            <!-- Row 7: Ravi Menon -->
+            <div class="h-[72px] relative">
+              <div class="absolute top-1/2 -translate-y-1/2 left-[1%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Cara Holt</div>
+                <div class="text-gray-500">8:00</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[10%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Ezra Gold</div>
+                <div class="text-gray-500">8:40</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[19%] w-[5%] bg-white border border-dotted border-gray-400 rounded-lg px-2 py-1.5 text-xs">
+                <div class="font-medium text-gray-600">Pia N.</div>
+                <div class="text-gray-500">9:20</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[26%] w-[6%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Omar S.</div>
+                <div class="text-gray-500">9:50</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[34%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium text-orange-600">Rita Moss</div>
+                <div class="text-gray-500">10:30</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[43%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Leon Hart</div>
+                <div class="text-gray-500">11:20</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[52%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Ana Silva</div>
+                <div class="text-gray-500">12:00</div>
+              </div>
+            </div>
+
+            <!-- Row 8: Claire Dunn -->
+            <div class="h-[72px] relative">
+              <div class="absolute top-1/2 -translate-y-1/2 left-[3%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Jade Moore</div>
+                <div class="text-gray-500">8:10</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[12%] w-[6%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Kim Lowe</div>
+                <div class="text-gray-500">9:00</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[20%] w-[7%] bg-white border border-dotted border-gray-400 rounded-lg px-2 py-1.5 text-xs">
+                <div class="font-medium text-gray-600">Nora Bell</div>
+                <div class="text-gray-500">9:40</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[29%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Sam Ortiz</div>
+                <div class="text-gray-500">10:20</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[38%] w-[6%] bg-white border border-dotted border-gray-400 rounded-lg px-2 py-1.5 text-xs">
+                <div class="font-medium text-gray-600">Tara Ng</div>
+                <div class="text-gray-500">11:10</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[46%] w-[6%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Will Cho</div>
+                <div class="text-gray-500">11:50</div>
+              </div>
+            </div>
+
+            <!-- Row 9: Victor Adeyemi -->
+            <div class="h-[72px] relative">
+              <div class="absolute top-1/2 -translate-y-1/2 left-[1%] w-[8%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Hugo Mendez</div>
+                <div class="text-gray-500">8:00</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[11%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Bea Ford</div>
+                <div class="text-gray-500">9:10</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[20%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium text-orange-600">Gus Lyle</div>
+                <div class="text-gray-500">9:50</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[29%] w-[6%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Ivy Shaw</div>
+                <div class="text-gray-500">10:40</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[37%] w-[6%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Dev Rao</div>
+                <div class="text-gray-500">11:20</div>
+              </div>
+            </div>
+
+            <!-- Row 10: Mei Tan -->
+            <div class="h-[72px] relative">
+              <div class="absolute top-1/2 -translate-y-1/2 left-[1%] w-[6%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Hanna L.</div>
+                <div class="text-gray-500">8:00</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[9%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Lena Fox</div>
+                <div class="text-gray-500">8:35</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[18%] w-[6%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Mona D.</div>
+                <div class="text-gray-500">9:15</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[26%] w-[7%] bg-white border border-dotted border-gray-400 rounded-lg px-2 py-1.5 text-xs">
+                <div class="font-medium text-gray-600">Rae Kim</div>
+                <div class="text-gray-500">10:00</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[35%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Gia Rossi</div>
+                <div class="text-gray-500">10:40</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[44%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Uma Patel</div>
+                <div class="text-gray-500">11:20</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[53%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Zara Ali</div>
+                <div class="text-gray-500">12:05</div>
+              </div>
+            </div>
+
+            <!-- Row 11: Lucas Ortiz -->
+            <div class="h-[72px] relative">
+              <div class="absolute top-1/2 -translate-y-1/2 left-[5%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Lina Ross</div>
+                <div class="text-gray-500">8:20</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[14%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Abe Long</div>
+                <div class="text-gray-500">9:10</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[24%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Cy Ward</div>
+                <div class="text-gray-500">10:10</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[33%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium text-orange-600">Eve Stone</div>
+                <div class="text-gray-500">11:10</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[42%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Ike Moran</div>
+                <div class="text-gray-500">12:00</div>
+              </div>
+            </div>
+
+            <!-- Row 12: Fiona Walsh -->
+            <div class="h-[72px] relative">
+              <div class="absolute top-1/2 -translate-y-1/2 left-[1%] w-[6%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Fay Lin</div>
+                <div class="text-gray-500">8:00</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[9%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Gil Vance</div>
+                <div class="text-gray-500">8:40</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[18%] w-[6%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Hal Ames</div>
+                <div class="text-gray-500">9:20</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[26%] w-[7%] bg-white border border-dotted border-gray-400 rounded-lg px-2 py-1.5 text-xs">
+                <div class="font-medium text-gray-600">Ida Park</div>
+                <div class="text-gray-500">10:00</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[35%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Jon Webb</div>
+                <div class="text-gray-500">10:40</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[44%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Kay Moss</div>
+                <div class="text-gray-500">11:20</div>
+              </div>
+              <div class="absolute top-1/2 -translate-y-1/2 left-[53%] w-[7%] bg-white border border-gray-200 rounded-lg px-2 py-1.5 text-xs shadow-sm">
+                <div class="font-medium">Lou Grant</div>
+                <div class="text-gray-500">12:00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
